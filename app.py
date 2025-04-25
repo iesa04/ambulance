@@ -51,9 +51,8 @@ def override_signal():
             {"_id": signal["_id"]},
             {"$set": {
                 "override": {
-                    "is_active": True,
                     "ambulance_id": ambulance_id,
-                    "expires_at": datetime.now() + timedelta(minutes=2)
+                    "expires_at": datetime.now() + timedelta(minutes=1)
                 }
             }}
         )
