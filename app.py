@@ -4,6 +4,9 @@ from pymongo.server_api import ServerApi
 from bson import ObjectId
 from datetime import datetime, timedelta
 import os
+import pytz
+
+india = pytz.timezone("Asia/Kolkata")
 
 # Load MongoDB password from environment variable
 db_password = os.environ.get("MONGO_DB_PASSWORD")
@@ -52,7 +55,7 @@ def override_signal():
             {"$set": {
                 "override": {
                     "ambulance_id": ambulance_id,
-                    "expires_at": datetime.now() + timedelta(minutes=1)
+                    "expires_at": datetime.now(india) + timedelta(minutes=1)
                 }
             }}
         )
